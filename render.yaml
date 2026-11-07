@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: nara-ai-backend
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: AI_API_URL
+        value: https://api.deepseek.com/chat/completions
+      - key: AI_MODEL
+        value: deepseek-flash
+      - key: AI_API_KEY
+        sync: false
+      - key: TAVILY_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: null
